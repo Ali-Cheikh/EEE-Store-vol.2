@@ -2,7 +2,7 @@
 const products = [
     { name: '5obz', price: .2, image: '/product/product.avif', intro: 'product description' },
     { name: '3tham', price: 1.5, image: '/product/product.avif', intro: 'product description' },
-    { name: 'casque jdida', price: 239, image: 'https://mk-media.mytek.tn/media/catalog/product/cache/8be3f98b14227a82112b46963246dfe1/m/i/micro-casque-gamer-aqirys-lyra-double-mode-blanc_1_.jpg', intro: '<a style="color:"red" href="https://www.mytek.tn/micro-casque-gamer-aqirys-lyra-double-mode-blanc.html">Click Me for more info</a>' },
+    { name: 'casque jdida', price: 239, image: '/img/aa.jpg', intro: '<a style="color:"red" href="https://www.mytek.tn/micro-casque-gamer-aqirys-lyra-double-mode-blanc.html">Click Me for more info</a>' },
 ];
 
 // Array to store items in the shopping cart
