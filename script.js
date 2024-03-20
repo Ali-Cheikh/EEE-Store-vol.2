@@ -1,8 +1,8 @@
 
 const products = [
-    { name: '5obz', price: .2, image: '/product/product.avif', intro: 'product description' },
-    { name: '3tham', price: 1.5, image: '/product/product.avif', intro: 'product description' },
-    { name: 'casque jdida', price: 239, image: '/img/aa.jpg', intro: '<a style="color:"red" href="https://www.mytek.tn/micro-casque-gamer-aqirys-lyra-double-mode-blanc.html">Click Me for more info</a>' },
+    { name: 'product 1', price: 20, image: '/product/product.avif', intro: 'product description' },
+    { name: 'product 2', price: 15, image: '/product/product.avif', intro: 'product description' },
+    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'product description' },
 ];
 
 // Array to store items in the shopping cart
@@ -43,40 +43,40 @@ function addToCart(productName, price) {
     console.log('Shopping Cart:', shoppingCart); // Log the shopping cart contents
     Swal.fire({
         icon: 'success',
-        title: 'Item Added to Cart',
-        text: `${productName} added to your shopping cart.`,
+        title: `<h3 style="color:#ffc5dd"> ${productName}</h3>`,
+        text: ` Added to Cart.`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 950
     });
 }
 
 function openCart() {
-    let cartContent = '<h5>Shopping Cart</h5>';
+    let cartContent = '<h6>Shopped Items</h6>';
     if (shoppingCart.length === 0) {
         cartContent += '<p>Your cart is empty.</p>';
     } else {
         shoppingCart.forEach(item => {
             cartContent += `
                 <div>
-                    <p>${item.productName} - ${item.price} TND - Quantity: 
-                        <input type="number" min="1" value="${item.count}" onchange="updateCount('${item.productName}', this.value)">
+                    <p>
+                    <button class="btn btn-danger" onclick="removeFromCart('${item.productName}')"><i class="fa fa-close"></i></button>
+                    <big><u>${item.productName}</u> :</big> ${item.price} <small><b>دت</b></small> =>
+                        <input type="number" min="1" value="${item.count}" onchange="updateCount('${item.productName}', this.value)" style="width:40px" controls="true">
                     </p>
-                    <button class="btn btn-danger" onclick="removeFromCart('${item.productName}')">Remove</button>
                 </div>
             `;
         });
         cartContent += `
             <div>
-                <button class="btn btn-primary" onclick="checkout()">Buy</button>
+                <button class="btn btn-primary" onclick="checkout()" width="100%">Buy <i class="fa fa-paper-plane"></i></button>
             </div>
         `;
     }
     Swal.fire({
-        title: 'Shopping Cart',
+        title: 'Your shopping cart',
         html: cartContent,
-        showCancelButton: true,
-        cancelButtonText: 'Close',
-        confirmButtonColor: "#6c757d"
+        confirmButtonText: 'Continue Shopping',
+        confirmButtonColor: "#fc5d"
     });
 }
 
@@ -161,7 +161,7 @@ function promptUserData(callback) {
                         },
                         inputPlaceholder: 'Select your city',
                         confirmButtonText: 'Buy 💰',
-                        confirmButtonColor: "#F4f499",
+                        confirmButtonColor: "#F4f411",
                         showCancelButton: false,
                         inputValidator: (value) => {
                             if (!value) {
