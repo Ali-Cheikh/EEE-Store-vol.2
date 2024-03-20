@@ -19,10 +19,9 @@ function displayProducts() {
         const productCard = `
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
-                    <img src="${product.image}" class="card-img-top" alt="product img " onclick="addToCart('${product.name}', ${product.price})">
+                    <img src="${product.image}" class="card-img-top" alt="product img " onclick="description('${product.intro}', '${product.image}', '${product.name}' , '${product.price}')">
                     <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <q>${product.intro}</q><br><hr>
+                        <center><h5 class="card-title">${product.name}</h5></center><hr>
                         <p class="card-text">Price: ${product.price} <small><b>دت</b></small>
                         <button class="btn btn-primary float-right" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button></p>
                     </div>
@@ -30,6 +29,14 @@ function displayProducts() {
             </div>
         `;
         productListDiv.innerHTML += productCard;
+    });
+}
+
+function description(intro, image, name, price) {
+    Swal.fire({
+        title: `<h5>${name}</h5><br><img src="${image}" width="50%"><br> `,
+        html: `<h2>${intro}</h2> <br><small><b>دت</b></small> ${price}`,
+        showConfirmButton: false,
     });
 }
 
