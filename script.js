@@ -1,8 +1,8 @@
 
 const products = [
-    { name: 'product 1', price: 20, image: '/product/product.avif', intro: 'product description' },
-    { name: 'product 2', price: 15, image: '/product/product.avif', intro: 'product description' },
-    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'product description' },
+    { name: 'product 1', price: 20, image: '/product/product.avif', intro: 'Product with great reviews' },
+    { name: 'product 2', price: 15, image: '/product/product.avif', intro: 'A bad product' },
+    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
 ];
 
 // Array to store items in the shopping cart
@@ -18,7 +18,7 @@ function displayProducts() {
     products.forEach(product => {
         const productCard = `
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card">
+                <div class="card bg-dark text-white">
                     <img src="${product.image}" class="card-img-top" alt="product img " onclick="description('${product.intro}', '${product.image}', '${product.name}' , '${product.price}')">
                     <div class="card-body">
                         <center><h5 class="card-title">${product.name}</h5></center><hr>
@@ -34,9 +34,10 @@ function displayProducts() {
 
 function description(intro, image, name, price) {
     Swal.fire({
-        title: `<h5>${name}</h5><br><img src="${image}" width="50%"><br> `,
-        html: `<h2>${intro}</h2> <br><small><b>دت</b></small> ${price}`,
+        title: `<h5 style="color:#fff">${name}</h5><img src="${image}" width="50%">`,
+        html: `<h3 style="color:#fff">${intro}</h3> <br><small><b>دت</b></small> ${price}`,
         showConfirmButton: false,
+        background: 'orange',
     });
 }
 
@@ -53,7 +54,8 @@ function addToCart(productName, price) {
         title: `<h3 style="color:#ffc5dd"> ${productName}</h3>`,
         text: ` Added to Cart.`,
         showConfirmButton: false,
-        timer: 950
+        timer: 950,
+        background: '#fc5d11'
     });
 }
 
@@ -108,7 +110,7 @@ function promptUserData(callback) {
         input: 'text',
         inputPlaceholder: 'Full Name',
         confirmButtonText: 'Next',
-        confirmButtonColor: "#FC3882",
+        confirmButtonColor: "#F9ff",
         inputValidator: (value) => {
             if (!value) {
                 return 'Please enter your name';
@@ -125,7 +127,7 @@ function promptUserData(callback) {
                 input: 'tel',
                 inputPlaceholder: 'Phone Number',
                 confirmButtonText: 'Next',
-                confirmButtonColor: "#FC3882",
+                confirmButtonColor: "#F9ff",
                 inputValidator: (value) => {
                     if (!value) {
                         return 'Please enter your phone number';
@@ -168,7 +170,7 @@ function promptUserData(callback) {
                         },
                         inputPlaceholder: 'Select your city',
                         confirmButtonText: 'Buy 💰',
-                        confirmButtonColor: "#F4f411",
+                        confirmButtonColor: "blue",
                         showCancelButton: false,
                         inputValidator: (value) => {
                             if (!value) {
