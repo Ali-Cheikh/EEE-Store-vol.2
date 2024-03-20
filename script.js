@@ -19,12 +19,12 @@ function displayProducts() {
         const productCard = `
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card">
-                    <img src="${product.image}" class="card-img-top" alt="product img ">
+                    <img src="${product.image}" class="card-img-top" alt="product img " onclick="addToCart('${product.name}', ${product.price})">
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
                         <q>${product.intro}</q><br><hr>
-                        <p class="card-text">Price: ${product.price} <small><b>دت</b></small></p>
-                        <button class="btn btn-primary" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                        <p class="card-text">Price: ${product.price} <small><b>دت</b></small>
+                        <button class="btn btn-primary float-right" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button></p>
                     </div>
                 </div>
             </div>
