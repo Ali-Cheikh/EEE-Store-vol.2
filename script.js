@@ -3,6 +3,7 @@ const products = [
     { name: 'product 1', price: 20, image: '/product/product.avif', intro: 'Product with great reviews' },
     { name: 'product 2', price: 15, image: '/product/product.avif', intro: 'A bad product' },
     { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
+    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
 ];
 
 // Array to store items in the shopping cart
@@ -104,6 +105,40 @@ function updateCount(productName, newCount) {
     }
 }
 
+function checkout() {
+    // Prompt user for their information
+    promptUserData(userData => {
+        if (shoppingCart.length === 0) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Your cart is empty. Please add some products before checking out.',
+                icon: 'error'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Confirm Purchase',
+            text: 'Are you sure you want to proceed with the purchase?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            cancelButtonColor: '#6c757d'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Send each product in the shopping cart along with the user's data
+                shoppingCart.forEach(item => {
+                    sendProductToGoogleSheets(item.productName, item.price, item.count, userData);
+                });
+
+                // Clear the shopping cart
+                shoppingCart.length = 0;
+            }
+        });
+    });
+}
+
 function promptUserData(callback) {
     Swal.fire({
         title: 'Enter Your Name',
@@ -192,40 +227,6 @@ function promptUserData(callback) {
         }
     });
 }
-function checkout() {
-    // Prompt user for their information
-    promptUserData(userData => {
-        if (shoppingCart.length === 0) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Your cart is empty. Please add some products before checking out.',
-                icon: 'error'
-            });
-            return;
-        }
-
-        Swal.fire({
-            title: 'Confirm Purchase',
-            text: 'Are you sure you want to proceed with the purchase?',
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Cancel',
-            cancelButtonColor: '#6c757d'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Send each product in the shopping cart along with the user's data
-                shoppingCart.forEach(item => {
-                    sendProductToGoogleSheets(item.productName, item.price, item.count, userData);
-                });
-
-                // Clear the shopping cart
-                shoppingCart.length = 0;
-            }
-        });
-    });
-}
-
 // Function to send a product along with user data to Google Sheets
 function sendProductToGoogleSheets(productName, price, count, userData) {
     Swal.fire({
