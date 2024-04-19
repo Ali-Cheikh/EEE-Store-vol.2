@@ -32,6 +32,7 @@ This is a simple web store project for selling various products, implemented wit
   <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white" alt="jQuery">
   <img src="https://img.shields.io/badge/Google_Apps_Script-00B589?style=for-the-badge&logo=google&logoColor=white" alt="Google Apps Script">
   <img src="https://img.shields.io/badge/Google_Sheets-34A853?style=for-the-badge&logo=google&logoColor=white" alt="Google Sheets">
+  <img src="https://img.shields.io/badge/Swal-10-blue?style=for-the-badge&logo=Swal%20-10&logoColor=blue" alt="Sweet Alert">
   <img src="https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="Visual Studio Code">
   <img src="https://img.shields.io/badge/MIT-License-yellow?style=for-the-badge" alt="MIT License">
 </p>
