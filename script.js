@@ -1,9 +1,8 @@
-
 const products = [
-    { name: 'product 1', price: 20, image: '/product/product.avif', intro: 'Product with great reviews' },
-    { name: 'product 2', price: 15, image: '/product/product.avif', intro: 'A bad product' },
-    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
-    { name: 'product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
+    { name: 'Product 1', price: 20, image: '/product/product.avif', intro: 'Product with great reviews' },
+    { name: 'Product 2', price: 15, image: '/product/product.avif', intro: 'A bad product' },
+    { name: 'Product 3', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
+    { name: 'Product 4', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
 ];
 
 // Array to store items in the shopping cart
@@ -24,7 +23,7 @@ function displayProducts() {
                     <div class="card-body">
                         <center><h5 class="card-title">${product.name}</h5></center><hr>
                         <p class="card-text">Price: ${product.price} <small><b>دت</b></small>
-                        <button class="btn btn-primary float-right" onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button></p>
+                        <button class="btn btn-primary float-right" onclick="confirmAddToCart('${product.name}', ${product.price}, '${product.intro}', '${product.image}')">Add to Cart</button></p>
                     </div>
                 </div>
             </div>
@@ -42,18 +41,39 @@ function description(intro, image, name, price) {
     });
 }
 
-function addToCart(productName, price) {
+function confirmAddToCart(productName, price, intro, image) {
+    Swal.fire({
+        title: 'Add to Cart',
+        html: `
+            <div style="display: flex; align-items: center;">
+                <div style="flex: 1; padding-right: 20px;">
+                    <img src="${image}" alt="${productName}" style="width: 100%;">
+                    <h5>${productName}</h5>
+                </div>
+                <div style="flex: 1;">
+                    <p>${intro}</p>
+                    <input type="number" id="quantity" class="swal2-input" placeholder="Quantity" min="1" max="10" value="1" style="width: 100%;">
+                    <button class="swal2-confirm swal2-styled" onclick="addToCart('${productName}', ${price}, document.getElementById('quantity').value)">Add to Cart</button>
+                </div>
+            </div>
+        `,
+        showConfirmButton: false,
+        background: '#f4f4f4',
+    });
+}
+
+function addToCart(productName, price, quantity) {
     const existingProductIndex = shoppingCart.findIndex(item => item.productName === productName);
     if (existingProductIndex !== -1) {
-        shoppingCart[existingProductIndex].count++;
+        shoppingCart[existingProductIndex].count += parseInt(quantity);
     } else {
-        shoppingCart.push({ productName, price, count: 1 });
+        shoppingCart.push({ productName, price, count: parseInt(quantity) });
     }
     console.log('Shopping Cart:', shoppingCart); // Log the shopping cart contents
     Swal.fire({
         icon: 'success',
         title: `<h3 style="color:#ffc5dd"> ${productName}</h3>`,
-        text: ` Added to Cart.`,
+        text: `Added ${quantity} to Cart.`,
         showConfirmButton: false,
         timer: 950,
         background: '#fc5d11'
@@ -167,7 +187,7 @@ function promptUserData(callback) {
                     if (!value) {
                         return 'Please enter your phone number';
                     }
-                    const phoneRegex = /^\d{8}$/;
+                    const phoneRegex = /^[+\d\s]*$/; // Modified regex to allow numbers, spaces, and '+'
                     if (!phoneRegex.test(value)) {
                         return 'Invalid Phone Number';
                     }
@@ -227,6 +247,7 @@ function promptUserData(callback) {
         }
     });
 }
+
 // Function to send a product along with user data to Google Sheets
 function sendProductToGoogleSheets(productName, price, count, userData) {
     Swal.fire({
