@@ -34,10 +34,10 @@ function displayProducts() {
 
 function description(intro, image, name, price) {
     Swal.fire({
-        title: `<h5 style="color:#fff">${name}</h5><img src="${image}" width="50%">`,
-        html: `<h3 style="color:#fff">${intro}</h3> <br><small><b>دت</b></small> ${price}`,
+        title: `<h5>${name}</h5><img src="${image}" width="50%">`,
+        html: `<h3>${intro}</h3> <br><small><b>دت</b></small> ${price}`,
         showConfirmButton: false,
-        background: 'orange',
+        background: '#f4f4f4',
     });
 }
 
@@ -72,11 +72,11 @@ function addToCart(productName, price, quantity) {
     console.log('Shopping Cart:', shoppingCart); // Log the shopping cart contents
     Swal.fire({
         icon: 'success',
-        title: `<h3 style="color:#ffc5dd"> ${productName}</h3>`,
+        title: `<h3> ${productName}</h3>`,
         text: `Added ${quantity} to Cart.`,
         showConfirmButton: false,
         timer: 950,
-        background: '#fc5d11'
+        background: '#f4f4f4'
     });
 }
 
