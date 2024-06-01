@@ -6,7 +6,7 @@
   </a>
 </p>
 
-This is a simple web store project for selling various products, implemented with HTML, CSS, and JavaScript. It includes features such as displaying products with images and descriptions, adding items to the shopping cart, collecting user information during checkout, and processing purchases via Google Sheets using Google Apps Script.
+This is a simple web store project for selling various products, implemented with HTML and JavaScript. It includes features such as displaying products with images and descriptions, adding items to the shopping cart, collecting user information during checkout, and processing purchases via Google Sheets using Google Apps Script.
 
 ## Website Preview
 
