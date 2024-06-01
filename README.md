@@ -11,12 +11,11 @@ This is a simple web store project for selling various products, implemented wit
 ## Website Preview
 
 <p align="center">
-  <img src="img/logo.jpg" alt="Logo" width="10%">
-</p>
-<p align="center">
   <a href="https://ali-cheikh.github.io/">
     <img src="https://img.shields.io/badge/Website-Preview-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website Preview">
   </a><br>
+  <img src="img/logo.jpg" alt="Logo" width="10%">
+  <br>
   <a href="https://app.netlify.com/sites/eeestore/deploys">
     <img src="https://api.netlify.com/api/v1/badges/76984ce2-a236-4940-bc08-51a7b08a7fec/deploy-status" alt="Website status">
   </a>
@@ -36,6 +35,9 @@ This is a simple web store project for selling various products, implemented wit
   <img src="https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="Visual Studio Code">
   <img src="https://img.shields.io/badge/MIT-License-yellow?style=for-the-badge" alt="MIT License">
 </p>
+
+### <p align="left"> Screen Shot </p>
+<img src="img/Screenshot.png" align="right">
 
 ## Getting Started
 
@@ -72,5 +74,4 @@ Simply open the `index.html` file in your web browser to explore and purchase pr
 This project is licensed under the terms of the MIT license. See the [LICENSE](LICENSE.md) file for details.
 
 ---
-
 © 2024 Ali Cheikh. All rights reserved.

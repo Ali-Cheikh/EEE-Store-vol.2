@@ -307,7 +307,6 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
                 imageAlt: 'Custom Success Icon',
                 showConfirmButton: false,
                 timer: 2000,
-                confirmButtonColor: 'dark-pink',
                 icon: null,
                 background:'black',
                 color:'white'
