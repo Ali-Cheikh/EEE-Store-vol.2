@@ -5,10 +5,9 @@ const products = [
     { name: 'Product 4', price: 150, image: '/product/product.avif', intro: 'Too expensive product' },
 ];
 
-// Array to store items in the shopping cart
 const shoppingCart = [];
+let cartButton = document.querySelector('.navbar-text.btn.btn-warning i');
 
-// Initialize the display of products
 displayProducts();
 
 function displayProducts() {
@@ -17,9 +16,9 @@ function displayProducts() {
 
     products.forEach(product => {
         const productCard = `
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                 <div class="card bg-dark text-white">
-                    <img src="${product.image}" class="card-img-top" alt="product img " onclick="description('${product.intro}', '${product.image}', '${product.name}' , '${product.price}')">
+                    <img src="${product.image}" class="card-img-top" alt="product img" onclick="description('${product.intro}', '${product.image}', '${product.name}', '${product.price}')">
                     <div class="card-body">
                         <center><h5 class="card-title">${product.name}</h5></center><hr>
                         <p class="card-text">Price: ${product.price} <small><b>دت</b></small>
@@ -34,10 +33,10 @@ function displayProducts() {
 
 function description(intro, image, name, price) {
     Swal.fire({
-        title: `<h5>${name}</h5><img src="${image}" width="50%">`,
-        html: `<h3>${intro}</h3> <br><small><b>دت</b></small> ${price}`,
+        title: `<h5 style="color:#fff">${name}</h5><img src="${image}" width="50%">`,
+        html: `<h3 style="color:#fff">${intro}</h3> <br><small><b>دت</b></small> ${price}`,
         showConfirmButton: false,
-        background: '#f4f4f4',
+        background: 'orange',
     });
 }
 
@@ -69,14 +68,19 @@ function addToCart(productName, price, quantity) {
     } else {
         shoppingCart.push({ productName, price, count: parseInt(quantity) });
     }
-    console.log('Shopping Cart:', shoppingCart); // Log the shopping cart contents
+    console.log('Shopping Cart:', shoppingCart);
+
+    // Change the cart button icon
+    cartButton.classList.remove('fa-cart-plus');
+    cartButton.classList.add('fa-bell');
+
     Swal.fire({
         icon: 'success',
-        title: `<h3> ${productName}</h3>`,
+        title: `<h3 style="color:#ffc5dd"> ${productName}</h3>`,
         text: `Added ${quantity} to Cart.`,
         showConfirmButton: false,
         timer: 950,
-        background: '#f4f4f4'
+        background: '#fc5d11'
     });
 }
 
@@ -84,6 +88,9 @@ function openCart() {
     let cartContent = '<h6>Shopped Items</h6>';
     if (shoppingCart.length === 0) {
         cartContent += '<p>Your cart is empty.</p>';
+        // Change the cart button icon back to the regular icon
+        cartButton.classList.remove('fa-bell');
+        cartButton.classList.add('fa-cart-plus');
     } else {
         shoppingCart.forEach(item => {
             cartContent += `
@@ -116,6 +123,11 @@ function removeFromCart(productName) {
         shoppingCart.splice(index, 1);
         openCart(); // Update the cart display after removal
     }
+    // Check if cart is empty to change the icon back
+    if (shoppingCart.length === 0) {
+        cartButton.classList.remove('fa-bell');
+        cartButton.classList.add('fa-cart-plus');
+    }
 }
 
 function updateCount(productName, newCount) {
@@ -126,7 +138,6 @@ function updateCount(productName, newCount) {
 }
 
 function checkout() {
-    // Prompt user for their information
     promptUserData(userData => {
         if (shoppingCart.length === 0) {
             Swal.fire({
@@ -147,13 +158,13 @@ function checkout() {
             cancelButtonColor: '#6c757d'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Send each product in the shopping cart along with the user's data
                 shoppingCart.forEach(item => {
                     sendProductToGoogleSheets(item.productName, item.price, item.count, userData);
                 });
 
-                // Clear the shopping cart
-                shoppingCart.length = 0;
+                shoppingCart.length = 0; // Clear the shopping cart after successful checkout
+                cartButton.classList.remove('fa-bell');
+                cartButton.classList.add('fa-cart-plus');
             }
         });
     });
@@ -187,9 +198,9 @@ function promptUserData(callback) {
                     if (!value) {
                         return 'Please enter your phone number';
                     }
-                    const phoneRegex = /^[+\d\s]*$/; // Modified regex to allow numbers, spaces, and '+'
+                    const phoneRegex = /\d{2}\d{3}\d{3}/; // Modified regex to allow numbers, spaces, and '+'
                     if (!phoneRegex.test(value)) {
-                        return 'Invalid Phone Number';
+                        return 'Example 50 101 300';
                     }
                 }
             }).then((phoneResult) => {
@@ -262,7 +273,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
         }
     });
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzz6FTDNRMLv0_U8tuhDzP5TloXU8p5EmE3isFZCzDRH35K-oLgbySsPLLpicXmSaks/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwgGhYluZtg_c5KVcgmVqv8XeJ5cGYOqAiXoDgAaK0LCicFveU6LkwVCluixUgERlx7/exec';
 
     const formData = new FormData();
     formData.append('productName', productName);
