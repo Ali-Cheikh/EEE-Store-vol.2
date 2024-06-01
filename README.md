@@ -39,7 +39,7 @@ This is a simple web store project for selling various products, implemented wit
 ### <p align="left"> Screen Shot </p>
 <img src="img/Screenshot.png" align="right" width="60%">
 
-## Getting Started
+### Getting Started
 
 To run this project locally:
 
