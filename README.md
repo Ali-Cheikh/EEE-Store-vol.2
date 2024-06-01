@@ -37,7 +37,7 @@ This is a simple web store project for selling various products, implemented wit
 </p>
 
 ### <p align="left"> Screen Shot </p>
-<img src="img/Screenshot.png" align="right">
+<img src="img/Screenshot.png" align="right" width="70%">
 
 ## Getting Started
 
