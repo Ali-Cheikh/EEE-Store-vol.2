@@ -303,11 +303,14 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
             Swal.fire({
                 title: 'Demand Reached',
                 text: "Your purchase was successful. We'll contact you soon.",
-                imageUrl: '/img/logo.jpg',
+                imageUrl: '/img/sc.png',
                 imageAlt: 'Custom Success Icon',
-                confirmButtonText: 'Yeyy 🥳',
+                showConfirmButton: false,
+                timer: 2000,
                 confirmButtonColor: 'dark-pink',
-                icon: null
+                icon: null,
+                background:'black',
+                color:'white'
             });
         } else {
             console.error('Error sending product:', productName);
