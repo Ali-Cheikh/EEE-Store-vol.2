@@ -12,7 +12,7 @@ let cartButton = document.querySelector('.navbar-text.btn.btn-warning i');
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 400) {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
