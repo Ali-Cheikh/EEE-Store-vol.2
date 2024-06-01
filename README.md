@@ -21,7 +21,7 @@ This is a simple web store project for selling various products, implemented wit
   </a>
 </p>
 
-## Technologies Used
+### Technologies Used
 
 <p align="center">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
@@ -47,7 +47,7 @@ To run this project locally:
 2. Open the project folder in your preferred code editor.
 3. Open the `index.html` file in a modern web browser.
 
-## Features
+### Features
 
 - **Product Display**: Showcase various products with images, names, prices, and descriptions.
 - **Add to Cart**: Allow users to add products to their shopping cart with real-time updates.
@@ -55,7 +55,7 @@ To run this project locally:
 - **Google Sheets Integration**: Utilize Google Apps Script to submit purchase details to Google Sheets for backend processing.
 - **Responsive Design**: Ensure compatibility and usability across different screen sizes.
 
-## Usage
+### Usage
 
 To contribute to this project, follow these steps:
 
