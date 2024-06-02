@@ -44,7 +44,6 @@ const products = [
 const shoppingCart = [];
 let cartButton = document.querySelector(".navbar-text.btn.btn-warning i");
 
-// When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function () {
   scrollFunction();
 };
@@ -59,7 +58,6 @@ function scrollFunction() {
     mybutton.style.display = "none";
   }
 }
-
 
 function SearchFunction() {
   var input, filter, div, products, h5, i, txtValue, noResults;
