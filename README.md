@@ -6,7 +6,7 @@
   </a>
 </p>
 
-This is a simple web store project for selling various products, implemented with HTML, CSS, and JavaScript. It includes features such as displaying products with images and descriptions, adding items to the shopping cart, collecting user information during checkout, and processing purchases via Google Sheets using Google Apps Script.
+This is a simple web store project for selling various products, implemented with HTML and JavaScript. It includes features such as displaying products with images and descriptions, adding items to the shopping cart, collecting user information during checkout, and processing purchases via Google Sheets using Google Apps Script.
 
 ## Website Preview
 
@@ -21,7 +21,7 @@ This is a simple web store project for selling various products, implemented wit
   </a>
 </p>
 
-## Technologies Used
+### Technologies Used
 
 <p align="center">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
@@ -37,9 +37,9 @@ This is a simple web store project for selling various products, implemented wit
 </p>
 
 ### <p align="left"> Screen Shot </p>
-<img src="img/Screenshot.png" align="right">
+<img src="img/Screenshot.png" align="right" width="60%">
 
-## Getting Started
+### Getting Started
 
 To run this project locally:
 
@@ -47,7 +47,7 @@ To run this project locally:
 2. Open the project folder in your preferred code editor.
 3. Open the `index.html` file in a modern web browser.
 
-## Features
+### Features
 
 - **Product Display**: Showcase various products with images, names, prices, and descriptions.
 - **Add to Cart**: Allow users to add products to their shopping cart with real-time updates.
@@ -55,7 +55,7 @@ To run this project locally:
 - **Google Sheets Integration**: Utilize Google Apps Script to submit purchase details to Google Sheets for backend processing.
 - **Responsive Design**: Ensure compatibility and usability across different screen sizes.
 
-## Usage
+### Usage
 
 To contribute to this project, follow these steps:
 
