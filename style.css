@@ -30,11 +30,19 @@ hr {
     #computer{
         display: none;
     }
+    label{
+        display: inline-block;
+        border-left: solid;
+        padding-left: 2px;
+        width: 200px;
+        border-right: solid;
+    }
 }
 @media screen and (min-width: 600px) {
     #phone{
         display: none;
     }
+
 }
 @media screen and (max-width: 350px) {
     #computer{
@@ -43,4 +51,12 @@ hr {
     #phone{
         display: none;
     }
+}
+label{
+    display: inline-block;
+    cursor: pointer;
+    border-left: solid;
+    padding-left: 2px;
+    width: 200px;
+    user-select: none;
 }

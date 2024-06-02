@@ -48,21 +48,35 @@ function scrollFunction() {
   }
 }
 
+
 function SearchFunction() {
-    var input, filter, div, products, h6, i, txtValue;
+    var input, filter, div, products, h5, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById("product-list");
     products = div.getElementsByClassName("product");
     for (i = 0; i < products.length; i++) {
-        h6 = products[i].getElementsByTagName("h6")[0];
-        txtValue = h6.textContent || h6.innerText;
+        h5 = products[i].getElementsByTagName("h5")[0];
+        txtValue = h5.textContent || h5.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             products[i].style.display = "";
         } else {
             products[i].style.display = "none";
         }
     }
+}
+
+function filterByCategory() {
+    const selectedCategories = Array.from(document.querySelectorAll('#category-filter input[type="checkbox"]:checked')).map(cb => cb.value.toUpperCase());
+    const products = document.querySelectorAll("#product-list .product");
+    products.forEach(product => {
+        const category = product.querySelector("h6").innerText.toUpperCase();
+        if (selectedCategories.length === 0 || selectedCategories.includes(category)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
 }
 
 displayProducts();

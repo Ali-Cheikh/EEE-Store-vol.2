@@ -588,6 +588,14 @@
         <div class="container">
             <br>
             <hr>
+            <center>
+                <div id="category-filter">
+                    <label><input type="checkbox" value="Good" onchange="filterByCategory()"> Good</label>
+                    <label><input type="checkbox" value="bad" onchange="filterByCategory()"> Bad</label>
+                    <label><input type="checkbox" value="expensive" onchange="filterByCategory()"> Expensive</label>
+                    <label><input type="checkbox" value="cheap" onchange="filterByCategory()"> Cheap</label>
+                </div>
+            </center>
             <input class="form-control mr-sm-2" type="search" id="myInput" onkeyup="SearchFunction()" placeholder="Search For Products" title="Type in a name"><br>
             <div id="product-list" class="row mt-6"></div>
             <br>
