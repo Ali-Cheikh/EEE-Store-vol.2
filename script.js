@@ -1,50 +1,43 @@
-// Swal.fire({
-//   html: `<div class="welcome">Welcome To The Shop</div>`,
-//   allowOutsideClick: false,
-//   showConfirmButton: false,
-//   timer: 3500,
-//   backdrop:'white',
-//   width:'100%',
-//   willOpen: () => {
-//     Swal.showLoading();
-//   },
-// });
+Swal.fire({
+  html: `<div class="welcome">Welcome To The Shop</div>`,
+  allowOutsideClick: false,
+  showConfirmButton: false,
+  timer: 3500,
+  backdrop:'white',
+  width:'100%',
+  willOpen: () => {
+    Swal.showLoading();
+  },
+});
 
 const products = [
   {
-    name: "1.5 ltr Bottle",
+    name: "Product 1",
     price: 20,
-    image: "/product/1.5.avif",
-    intro: "Extra Virgin Olive Oil 1.5ltr Bottle 0.3 Acidity",
-    category: "olive"
+    image: "/product/product.avif",
+    intro: "Product with great reviews",
+    category: "Good"
   },
   {
-    name: "2 ltr Bottle",
-    price: 20,
-    image: "/product/2.avif",
-    intro: "Extra Virgin Olive Oil 2ltr Bottle 0.3 Acidity",
-    category: "olive"
+    name: "Product 2",
+    price: 15,
+    image: "/product/product.avif",
+    intro: "A bad product",
+    category: "bad"
   },
   {
-    name: "5 ltr Bottle",
-    price: 20,
-    image: "/product/5.avif",
-    intro: "Extra Virgin Olive Oil 5ltr Bottle 0.3 Acidity",
-    category: "olive"
+    name: "Product 3",
+    price: 75,
+    image: "/product/product.avif",
+    intro: "Too expensive product",
+    category: "expensive"
   },
   {
-    name: "0.25 ltr Bottle",
-    price: 20,
-    image: "/product/25.png",
-    intro: "Extra Virgin Olive Oil 0.25ltr Bottle 0.3 Acidity",
-    category: "olive"
-  },
-  {
-    name: "0.5 ltr Bottle",
-    price: 20,
-    image: "/product/5.png",
-    intro: "Extra Virgin Olive Oil 0.5ltr Bottle 0.3 Acidity",
-    category: "olive"
+    name: "Product 4",
+    price: 5,
+    image: "/product/product.avif",
+    intro: "Too cheap product",
+    category: "cheap"
   },
 ];
 
@@ -401,9 +394,6 @@ function checkout() {
         // Clear the shopping cart after successful checkout
         shoppingCart.length = 0;
         updateCartIcon(); // Update cart icon
-        const newUrl = '/checkout'; // Change this to the desired URL
-        const newState = { page: 'checkout' }; // Change this to any state you want to associate
-        history.pushState(newState, '', newUrl);
       }
     });
   });
