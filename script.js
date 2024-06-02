@@ -50,21 +50,40 @@ function scrollFunction() {
 
 
 function SearchFunction() {
-    var input, filter, div, products, h5, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    div = document.getElementById("product-list");
-    products = div.getElementsByClassName("product");
-    for (i = 0; i < products.length; i++) {
-        h5 = products[i].getElementsByTagName("h5")[0];
-        txtValue = h5.textContent || h5.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            products[i].style.display = "";
-        } else {
-            products[i].style.display = "none";
-        }
-    }
+  var input, filter, div, products, h5, i, txtValue, noResults;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("product-list");
+  products = div.getElementsByClassName("product");
+  noResults = true;
+
+  for (i = 0; i < products.length; i++) {
+      h5 = products[i].getElementsByTagName("h5")[0];
+      txtValue = h5.textContent || h5.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          products[i].style.display = "";
+          noResults = false;
+      } else {
+          products[i].style.display = "none";
+      }
+  }
+
+  var noResultsMessage = document.getElementById("no-results-message");
+  if (noResults) {
+      if (!noResultsMessage) {
+          noResultsMessage = document.createElement("h3");
+          noResultsMessage.id = "no-results-message";
+          noResultsMessage.innerHTML = `<div class="container mt-5"><center>No product with the name "${input.value}"</center></div>`;
+          noResultsMessage.style.color = "red";
+          div.appendChild(noResultsMessage);
+      } else{
+        noResultsMessage.remove();
+      }
+  } else{
+      noResultsMessage.remove();
+  }
 }
+
 
 function filterByCategory() {
     const selectedCategories = Array.from(document.querySelectorAll('#category-filter input[type="checkbox"]:checked')).map(cb => cb.value.toUpperCase());
