@@ -254,44 +254,6 @@ function updateCount(productName, newCount) {
   }
 }
 
-function checkout() {
-  promptUserData((userData) => {
-    if (shoppingCart.length === 0) {
-      Swal.fire({
-        title: "Error!",
-        text: "Your cart is empty. Please add some products before checking out.",
-        icon: "error",
-      });
-      return;
-    }
-
-    Swal.fire({
-      title: "Confirm Purchase",
-      text: "Are you sure you want to proceed with the purchase?",
-      icon: "info",
-      showCancelButton: true,
-      confirmButtonText: "Confirm",
-      cancelButtonText: "Cancel",
-      cancelButtonColor: "#6c757d",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        shoppingCart.forEach((item) => {
-          sendProductToGoogleSheets(
-            item.productName,
-            item.price,
-            item.count,
-            userData
-          );
-        });
-
-        shoppingCart.length = 0; // Clear the shopping cart after successful checkout
-        cartButton.classList.remove("fa-bell");
-        cartButton.classList.add("fa-cart-plus");
-      }
-    });
-  });
-}
-
 function promptUserData(callback) {
   Swal.fire({
     title: "Enter Your Name",
@@ -378,6 +340,53 @@ function promptUserData(callback) {
         }
       });
     }
+  });
+}
+
+function checkout() {
+  // Check if the cart is empty
+  if (shoppingCart.length === 0) {
+    Swal.fire({
+      title: "Error!",
+      text: "Your cart is empty. Please add some products before checking out.",
+      icon: "error",
+    });
+    return;
+  }
+
+  // Calculate total price
+  const totalPrice = shoppingCart.reduce((total, item) => total + item.price * item.count, 0);
+
+  // Prompt for user data
+  promptUserData((userData) => {
+    Swal.fire({
+      title: "Confirm Purchase",
+      html: `
+        <p>Total Price: ${totalPrice} دت</p>
+        <p>Are you sure you want to proceed with the purchase?</p>
+      `,
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Confirm",
+      confirmButtonColor:"green",
+      cancelButtonText: "Cancel",
+      cancelButtonColor: "#6c757d",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        shoppingCart.forEach((item) => {
+          sendProductToGoogleSheets(
+            item.productName,
+            item.price,
+            item.count,
+            userData
+          );
+        });
+
+        // Clear the shopping cart after successful checkout
+        shoppingCart.length = 0;
+        updateCartIcon(); // Update cart icon
+      }
+    });
   });
 }
 
