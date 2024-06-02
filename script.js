@@ -39,8 +39,8 @@ window.onscroll = function () {
 
 function scrollFunction() {
   if (
-    document.body.scrollTop > 300 ||
-    document.documentElement.scrollTop > 300
+    document.body.scrollTop > 350 ||
+    document.documentElement.scrollTop > 400
   ) {
     mybutton.style.display = "block";
   } else {
