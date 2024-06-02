@@ -40,10 +40,18 @@ hr {
     .foot h3{
         font-size: larger;
     }
+    .welcome{
+        font-size: 150%;
+        font-weight: bold;
+    }
 }
 @media screen and (min-width: 600px) {
     #phone{
         display: none;
+    }
+    .welcome{
+        font-size: 300%;
+        font-weight: bold;
     }
 
 }

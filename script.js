@@ -1,3 +1,15 @@
+Swal.fire({
+  html: `<div class="welcome">Welcome To The Shop</div>`,
+  allowOutsideClick: false,
+  showConfirmButton: false,
+  timer: 2000,
+  backdrop:'white',
+  width:'100%',
+  willOpen: () => {
+    Swal.showLoading();
+  },
+});
+
 const products = [
   {
     name: "Product 1",
