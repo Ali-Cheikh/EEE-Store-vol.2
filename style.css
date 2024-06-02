@@ -37,6 +37,9 @@ hr {
         width: 200px;
         border-right: solid;
     }
+    .foot h3{
+        font-size: larger;
+    }
 }
 @media screen and (min-width: 600px) {
     #phone{
