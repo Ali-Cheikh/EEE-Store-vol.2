@@ -1,0 +1,46 @@
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 5px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.horizontal-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.horizontal-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 8px;
+}
+.horizontal-card-body {
+    flex: 1;
+}
+.card-title {
+    margin-bottom: 0.5rem;
+}
+.card-text {
+    margin-bottom: 0.5rem;
+}
+@media screen and (max-width: 600px) {
+    #computer{
+        display: none;
+    }
+}
+@media screen and (min-width: 600px) {
+    #phone{
+        display: none;
+    }
+}
+@media screen and (max-width: 350px) {
+    #computer{
+        display: block;
+    }
+    #phone{
+        display: none;
+    }
+}
