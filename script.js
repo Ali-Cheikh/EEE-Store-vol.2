@@ -362,8 +362,7 @@ function checkout() {
     Swal.fire({
       title: "Confirm Purchase",
       html: `
-        <p>Total Price: ${totalPrice} دت</p>
-        <p>Are you sure you want to proceed with the purchase?</p>
+        <p>Total Price: ${totalPrice} دت<br>Are you sure you want to proceed with the purchase?</p>
       `,
       icon: "info",
       showCancelButton: true,
