@@ -1,3 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
+.sniglet-regular {
+    font-family: "Sniglet", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .sniglet-extrabold {
+    font-family: "Sniglet", system-ui;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+
 hr {
     display: block;
     height: 1px;
@@ -70,4 +85,8 @@ label{
     padding-left: 2px;
     width: 200px;
     user-select: none;
+}
+#product-list,h2{
+    font-family: "sniglet", system-ui;
+    font-style: bold;
 }
