@@ -2,7 +2,7 @@ Swal.fire({
   html: `<div class="welcome">Welcome To The Shop</div>`,
   allowOutsideClick: false,
   showConfirmButton: false,
-  timer: 2000,
+  timer: 3500,
   backdrop:'white',
   width:'100%',
   willOpen: () => {
