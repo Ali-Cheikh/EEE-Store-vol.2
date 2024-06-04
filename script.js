@@ -12,32 +12,39 @@ Swal.fire({
 
 const products = [
   {
-    name: "Product 1",
+    name: "1.5 ltr Bottle",
     price: 20,
-    image: "/product/product.avif",
-    intro: "Product with great reviews",
-    category: "Good"
+    image: "/product/1.5.avif",
+    intro: "Extra Virgin Olive Oil 1.5ltr Bottle 0.3 Acidity",
+    category: "olive"
   },
   {
-    name: "Product 2",
-    price: 15,
-    image: "/product/product.avif",
-    intro: "A bad product",
-    category: "bad"
+    name: "2 ltr Bottle",
+    price: 20,
+    image: "/product/2.avif",
+    intro: "Extra Virgin Olive Oil 2ltr Bottle 0.3 Acidity",
+    category: "olive"
   },
   {
-    name: "Product 3",
-    price: 75,
-    image: "/product/product.avif",
-    intro: "Too expensive product",
-    category: "expensive"
+    name: "5 ltr Bottle",
+    price: 20,
+    image: "/product/5.avif",
+    intro: "Extra Virgin Olive Oil 5ltr Bottle 0.3 Acidity",
+    category: "olive"
   },
   {
-    name: "Product 4",
-    price: 5,
-    image: "/product/product.avif",
-    intro: "Too cheap product",
-    category: "cheap"
+    name: "0.25 ltr Bottle",
+    price: 20,
+    image: "/product/25.png",
+    intro: "Extra Virgin Olive Oil 0.25ltr Bottle 0.3 Acidity",
+    category: "olive"
+  },
+  {
+    name: "0.5 ltr Bottle",
+    price: 20,
+    image: "/product/5.png",
+    intro: "Extra Virgin Olive Oil 0.5ltr Bottle 0.3 Acidity",
+    category: "olive"
   },
 ];
 

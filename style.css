@@ -55,6 +55,9 @@ hr {
     .foot h3{
         font-size: larger;
     }
+    .foot-logo{
+        width: 100%;
+    }
     .welcome{
         font-size: 150%;
         font-weight: bold;
@@ -63,6 +66,9 @@ hr {
 @media screen and (min-width: 600px) {
     #phone{
         display: none;
+    }
+    .foot-logo{
+        width: 50%;
     }
     .welcome{
         font-size: 300%;
@@ -89,4 +95,13 @@ label{
 #product-list,h2{
     font-family: "sniglet", system-ui;
     font-style: bold;
+}
+.sss{
+    width: 10%;
+    background-repeat: repeat-x;
+    rotate: 90deg;
+}
+.card-img-top{
+    overflow:hidden;
+    max-height: 400px;
 }
