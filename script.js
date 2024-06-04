@@ -394,6 +394,9 @@ function checkout() {
         // Clear the shopping cart after successful checkout
         shoppingCart.length = 0;
         updateCartIcon(); // Update cart icon
+        const newUrl = '/checkout'; // Change this to the desired URL
+        const newState = { page: 'checkout' }; // Change this to any state you want to associate
+        history.pushState(newState, '', newUrl);
       }
     });
   });
