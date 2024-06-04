@@ -14,7 +14,7 @@ This is a simple web store project for selling various products, implemented wit
   <a href="https://ali-cheikh.github.io/">
     <img src="https://img.shields.io/badge/Website-Preview-blue?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website Preview">
   </a><br>
-  <img src="img/logo.jpg" alt="Logo" width="10%">
+  <img src="img/logo.jpg" alt="Logo" width="20%">
   <br>
   <a href="https://app.netlify.com/sites/eeestore/deploys">
     <img src="https://api.netlify.com/api/v1/badges/76984ce2-a236-4940-bc08-51a7b08a7fec/deploy-status" alt="Website status">
