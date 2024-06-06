@@ -431,6 +431,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
   xhr.open("POST", scriptUrl);
   xhr.onload = function () {
     if (xhr.status === 200) {
+      navigator.vibrate([200, 100, 200]);
       console.log("Product sent successfully:", productName);
       // Show success message
       Swal.fire({
