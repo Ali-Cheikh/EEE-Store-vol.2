@@ -1,17 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap');
 .sniglet-regular {
     font-family: "Sniglet", system-ui;
     font-weight: 400;
     font-style: normal;
   }
-  
   .sniglet-extrabold {
     font-family: "Sniglet", system-ui;
     font-weight: 800;
     font-style: normal;
   }
-  
 
 hr {
     display: block;
@@ -42,9 +39,6 @@ hr {
     margin-bottom: 0.5rem;
 }
 @media screen and (max-width: 600px) {
-    #computer{
-        display: none;
-    }
     label{
         display: inline-block;
         border-left: solid;
@@ -64,9 +58,6 @@ hr {
     }
 }
 @media screen and (min-width: 600px) {
-    #phone{
-        display: none;
-    }
     .foot-logo{
         width: 50%;
     }
@@ -74,16 +65,8 @@ hr {
         font-size: 300%;
         font-weight: bold;
     }
+}
 
-}
-@media screen and (max-width: 350px) {
-    #computer{
-        display: block;
-    }
-    #phone{
-        display: none;
-    }
-}
 label{
     display: inline-block;
     cursor: pointer;

@@ -26,6 +26,9 @@ function doPost(e) {
     // Add the location from the request parameters
     rowData.push(e.parameter.location);
 
+    // Add the Address from the request parameters
+    rowData.push(e.parameter.addressResult);
+
     // Calculate total price based on count and price
     var totalPrice = parseFloat(e.parameter.price) * parseInt(e.parameter.count);
     rowData.push(totalPrice);

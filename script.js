@@ -1,15 +1,3 @@
-Swal.fire({
-  html: `<div class="welcome">Welcome To The Shop</div>`,
-  allowOutsideClick: false,
-  showConfirmButton: false,
-  timer: 3500,
-  backdrop:'white',
-  width:'100%',
-  willOpen: () => {
-    Swal.showLoading();
-  },
-});
-
 const products = [
   {
     name: "Product 1",
@@ -95,18 +83,6 @@ function SearchFunction() {
 }
 
 
-function filterByCategory() {
-    const selectedCategories = Array.from(document.querySelectorAll('#category-filter input[type="checkbox"]:checked')).map(cb => cb.value.toUpperCase());
-    const products = document.querySelectorAll("#product-list .product");
-    products.forEach(product => {
-        const category = product.querySelector("h6").innerText.toUpperCase();
-        if (selectedCategories.length === 0 || selectedCategories.includes(category)) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
-    });
-}
 
 displayProducts();
 
@@ -127,38 +103,22 @@ function displayProducts() {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 mb-4 product" id="phone">
-                <div class="card bg-dark text-white horizontal-card">
-                    <img src="${product.image}" class="card-img-top" alt="product img" onclick="description('${product.intro}', '${product.image}', '${product.name}', '${product.price}')">
-                    <div class="card-body horizontal-card-body">
-                        <h6 style="display:none">${product.category}</h6>
-                        <h5 class="card-title">${product.name}</h5><hr>
-                        <p class="card-text">Price: ${product.price} <small><b>دت</b></small></p>
-                        <button class="btn btn-primary float-right" onclick="confirmAddToCart('${product.name}', ${product.price}, '${product.intro}', '${product.image}')">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
         `;
     productListDiv.innerHTML += productCard;
   });
 }
 
-function description(intro, image, productName, price) {
+function description(intro, image, productName) {
   Swal.fire({
     title:`<h2> ${productName}</h2>`,
     html: `
         <div style="display: flex; align-items: center;">
-            <div style="flex: 1; padding-right: 20px;">
                 <img src="${image}" style="width: 100%; height: 100%; object">
-            </div>
-            <div style="flex: 1; border-left:dashed">
-                <p>${intro}</p> <br><small><b>دت</b></small> ${price}
-            </div>
         </div>
             `,
     backdrop:'#f333333',
     showConfirmButton: false,
-    background: "#f4f4f4",
+    background: "#fffff4",
   });
 }
 
@@ -167,19 +127,15 @@ function confirmAddToCart(productName, price, intro, image) {
     title: "Add to Cart",
     html: `
             <div style="display: flex; align-items: center;">
-                <div style="flex: 1; padding-right: 20px;">
-                    <img src="${image}" alt="${productName}" style="width: 100%;">
+                <div style="padding-right: 20px;">
+                    <img src="${image}" alt="${productName}" style="width: 100%;"><hr>
                     <h5>${productName}</h5>
-                </div>
-                <div style="flex: 1;">
-                    <p>${intro}</p>
-                    <input type="number" id="quantity" class="swal2-input" placeholder="Quantity" min="1" max="10" value="1" style="width: 100%;">
+                    <input type="number" id="quantity" class="swal2-input" placeholder="Quantity" min="1" max="10" value="1" style="width: 30%;">
                     <button class="swal2-confirm swal2-styled" onclick="addToCart('${productName}', ${price}, document.getElementById('quantity').value)">Add to Cart</button>
-                </div>
             </div>
         `,
     showConfirmButton: false,
-    background: "#f4f4f4",
+    background: "#fffff4",
   });
 }
 
@@ -220,8 +176,8 @@ function openCart() {
                 <div>
                     <p>
                     <button class="btn btn-danger" onclick="removeFromCart('${item.productName}')"><i class="fa fa-close"></i></button>
-                    <big><u>${item.productName}</u> :</big> ${item.price} <small><b>دت</b></small> =>
-                        <input type="number" min="1" value="${item.count}" onchange="updateCount('${item.productName}', this.value)" style="width:40px" controls="true">
+                    <big><u>${item.productName}</u> :</big> ${item.price}
+                    <input type="number" min="1" class="swal2-input" value="${item.count}" onchange="updateCount('${item.productName}', this.value)" style="width:24%" controls="true">
                     </p>
                 </div>
             `;
@@ -263,95 +219,195 @@ function updateCount(productName, newCount) {
     shoppingCart[index].count = parseInt(newCount);
   }
 }
-
 function promptUserData(callback) {
   Swal.fire({
-    title: "Enter Your Name",
-    input: "text",
-    inputPlaceholder: "Full Name",
-    confirmButtonText: "Next",
-    confirmButtonColor: "#F9ff",
-    inputValidator: (value) => {
-      if (!value) {
-        return "Please enter your name";
-      }
+    title: "Enter Your Details",
+    html:
+      '<input id="swal-input1" class="swal2-input" placeholder="Full Name">' +
+      '<input id="swal-input2" class="swal2-input" placeholder="Phone Number">' +
+      '<select id="swal-input3" class="swal2-input">' +
+        '<option value="" disabled selected>Select Your City</option>' +
+        '<option value="Tunis">Tunis</option>' +
+        '<option value="Sfax">Sfax</option>' +
+        '<option value="Sousse">Sousse</option>' +
+        '<option value="Kairouan">Kairouan</option>' +
+        '<option value="Bizerte">Bizerte</option>' +
+        '<option value="Gabes">Gabes</option>' +
+        '<option value="Ariana">Ariana</option>' +
+        '<option value="Gafsa">Gafsa</option>' +
+        '<option value="Monastir">Monastir</option>' +
+        '<option value="Manouba">Manouba</option>' +
+        '<option value="Ben Arous">Ben Arous</option>' +
+        '<option value="Kasserine">Kasserine</option>' +
+        '<option value="Medenine">Medenine</option>' +
+        '<option value="Mahdia">Mahdia</option>' +
+        '<option value="Zaghouan">Zaghouan</option>' +
+        '<option value="Beja">Beja</option>' +
+        '<option value="Jendouba">Jendouba</option>' +
+        '<option value="Nabeul">Nabeul</option>' +
+        '<option value="Kebili">Kebili</option>' +
+        '<option value="Siliana">Siliana</option>' +
+        '<option value="Tataouine">Tataouine</option>' +
+        '<option value="Tozeur">Tozeur</option>' +
+        '<option value="Kef">Kef</option>' +
+      '</select>' +
+      '<input id="swal-input4" class="swal2-input" placeholder="Your Address">',
+    focusConfirm: false,
+    preConfirm: () => {
+      const name = document.getElementById('swal-input1').value;
+      const phone = document.getElementById('swal-input2').value;
+      const city = document.getElementById('swal-input3').value;
+      const address = document.getElementById('swal-input4').value;
+
+      // Validation logic for each field
       const nameRegex = /^[a-zA-Z\s]*$/;
-      if (!nameRegex.test(value)) {
-        return "Invalid Name";
+      const phoneRegex = /\d{2}\d{3}\d{3}/;
+
+      if (!name) {
+        Swal.showValidationMessage('Please enter your name');
+        return false;
+      } else if (!nameRegex.test(name)) {
+        Swal.showValidationMessage('Invalid name');
+        return false;
       }
-    },
-  }).then((nameResult) => {
-    if (nameResult.isConfirmed) {
-      Swal.fire({
-        title: "Enter Your Phone Number",
-        input: "tel",
-        inputPlaceholder: "Phone Number",
-        confirmButtonText: "Next",
-        confirmButtonColor: "#F9ff",
-        inputValidator: (value) => {
-          if (!value) {
-            return "Please enter your phone number";
-          }
-          const phoneRegex = /\d{2}\d{3}\d{3}/; // Modified regex to allow numbers, spaces, and '+'
-          if (!phoneRegex.test(value)) {
-            return "Example 50 101 300";
-          }
-        },
-      }).then((phoneResult) => {
-        if (phoneResult.isConfirmed) {
-          Swal.fire({
-            title: "Select Your City",
-            input: "select",
-            inputOptions: {
-              Tunis: "Tunis",
-              Sfax: "Sfax",
-              Sousse: "Sousse",
-              Kairouan: "Kairouan",
-              Bizerte: "Bizerte",
-              Gabes: "Gabes",
-              Ariana: "Ariana",
-              Gafsa: "Gafsa",
-              Monastir: "Monastir",
-              Manouba: "Manouba",
-              "Ben Arous": "Ben Arous",
-              Kasserine: "Kasserine",
-              Medenine: "Medenine",
-              Mahdia: "Mahdia",
-              Zaghouan: "Zaghouan",
-              Beja: "Beja",
-              Jendouba: "Jendouba",
-              Nabeul: "Nabeul",
-              Kebili: "Kebili",
-              Siliana: "Siliana",
-              Tataouine: "Tataouine",
-              Tozeur: "Tozeur",
-              Kef: "Kef",
-              Kasserine: "Kasserine",
-            },
-            inputPlaceholder: "Select your city",
-            confirmButtonText: "Buy 💰",
-            confirmButtonColor: "blue",
-            showCancelButton: false,
-            inputValidator: (value) => {
-              if (!value) {
-                return "Please select your city";
-              }
-            },
-          }).then((cityResult) => {
-            if (cityResult.isConfirmed) {
-              const userData = {
-                name: nameResult.value,
-                phone: phoneResult.value,
-                location: cityResult.value,
-              };
-              callback(userData);
-            }
-          });
-        }
-      });
+
+      if (!phone) {
+        Swal.showValidationMessage('Please enter your phone number');
+        return false;
+      } else if (!phoneRegex.test(phone)) {
+        Swal.showValidationMessage('Phone number should follow the format: 50 101 300');
+        return false;
+      }
+
+      if (!city) {
+        Swal.showValidationMessage('Please select your city');
+        return false;
+      }
+
+      if (!address) {
+        Swal.showValidationMessage('Please enter your home address');
+        return false;
+      }
+
+      // Return the data for use in callback
+      return {
+        name: name,
+        phone: phone,
+        location: city,
+        address: address,
+      };
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Pass the data to the callback function
+      callback(result.value);
     }
   });
 }
+
+
+// function promptUserData(callback) {
+//   Swal.fire({
+//     title: "Enter Your Name",
+//     input: "text",
+//     inputPlaceholder: "Full Name",
+//     confirmButtonText: "Next",
+//     confirmButtonColor: "#F9ff",
+//     inputValidator: (value) => {
+//       if (!value) {
+//         return "Please enter your name";
+//       }
+//       const nameRegex = /^[a-zA-Z\s]*$/;
+//       if (!nameRegex.test(value)) {
+//         return "Invalid Name";
+//       }
+//     },
+//   }).then((nameResult) => {
+//     if (nameResult.isConfirmed) {
+//       Swal.fire({
+//         title: "Enter Your Phone Number",
+//         input: "tel",
+//         inputPlaceholder: "Phone Number",
+//         confirmButtonText: "Next",
+//         confirmButtonColor: "#F9ff",
+//         inputValidator: (value) => {
+//           if (!value) {
+//             return "Please enter your phone number";
+//           }
+//           const phoneRegex = /\d{2}\d{3}\d{3}/; // Modified regex to allow numbers, spaces, and '+'
+//           if (!phoneRegex.test(value)) {
+//             return "Example 50 101 300";
+//           }
+//         },
+//       }).then((phoneResult) => {
+//         if (phoneResult.isConfirmed) {
+//           Swal.fire({
+//             title: "Select Your City",
+//             input: "select",
+//             inputOptions: {
+//               Tunis: "Tunis",
+//               Sfax: "Sfax",
+//               Sousse: "Sousse",
+//               Kairouan: "Kairouan",
+//               Bizerte: "Bizerte",
+//               Gabes: "Gabes",
+//               Ariana: "Ariana",
+//               Gafsa: "Gafsa",
+//               Monastir: "Monastir",
+//               Manouba: "Manouba",
+//               "Ben Arous": "Ben Arous",
+//               Kasserine: "Kasserine",
+//               Medenine: "Medenine",
+//               Mahdia: "Mahdia",
+//               Zaghouan: "Zaghouan",
+//               Beja: "Beja",
+//               Jendouba: "Jendouba",
+//               Nabeul: "Nabeul",
+//               Kebili: "Kebili",
+//               Siliana: "Siliana",
+//               Tataouine: "Tataouine",
+//               Tozeur: "Tozeur",
+//               Kef: "Kef",
+//             },
+//             inputPlaceholder: "Select your city",
+//             confirmButtonText: "Next",
+//             showCancelButton: false,
+//             inputValidator: (value) => {
+//               if (!value) {
+//                 return "Please select your city";
+//               }
+//             },
+//           }).then((cityResult) => {
+//             if (cityResult.isConfirmed) {
+//               Swal.fire({
+//                 title: "Enter Your Address",
+//                 input: "text",
+//                 inputPlaceholder: "Your address",
+//                 confirmButtonText: "Next",
+//                 showCancelButton: false,
+//                 inputValidator: (value) => {
+//                   if (!value) {
+//                     return "Please enter your home address";
+//                   }
+//                 },
+//               }).then((addressResult) => {
+//                 if (addressResult.isConfirmed) {
+//                   const userData = {
+//                     name: nameResult.value,
+//                     phone: phoneResult.value,
+//                     location: cityResult.value,  // Use cityResult for city value
+//                     address: addressResult.value, // Use addressResult for address value
+//                   };
+//                   callback(userData); // Pass the collected user data to the callback
+//                 }
+//               });
+//             }
+//           });
+//         }
+//       });
+//     }
+//   });
+// }
 
 function checkout() {
   // Check if the cart is empty
@@ -393,7 +449,6 @@ function checkout() {
 
         // Clear the shopping cart after successful checkout
         shoppingCart.length = 0;
-        updateCartIcon(); // Update cart icon
         const newUrl = '/checkout'; // Change this to the desired URL
         const newState = { page: 'checkout' }; // Change this to any state you want to associate
         history.pushState(newState, '', newUrl);
@@ -416,8 +471,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
     },
   });
 
-  const scriptUrl =
-    "https://script.google.com/macros/s/AKfycbwgGhYluZtg_c5KVcgmVqv8XeJ5cGYOqAiXoDgAaK0LCicFveU6LkwVCluixUgERlx7/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbyo1HjEa0OKfMyTNVIZoguYTF5KmPjeX5YbqG6TyA2IaLqETGHdoi8eEKWV0M5m7vAM/exec";
 
   const formData = new FormData();
   formData.append("productName", productName);
@@ -426,6 +480,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
   formData.append("phone", userData.phone);
   formData.append("name", userData.name);
   formData.append("location", userData.location);
+  formData.append("addressResult", userData.address);
 
   const xhr = new XMLHttpRequest();
   xhr.open("POST", scriptUrl);
