@@ -71,7 +71,7 @@ function SearchFunction() {
       if (!noResultsMessage) {
           noResultsMessage = document.createElement("h3");
           noResultsMessage.id = "no-results-message";
-          noResultsMessage.innerHTML = `<div class="container mt-5"><center>No product with the name "${input.value}"</center></div>`;
+          noResultsMessage.innerHTML = `<div class="container mt-5"><center>mafamech produit bil ism hetha "${input.value}"</center></div>`;
           noResultsMessage.style.color = "red";
           div.appendChild(noResultsMessage);
       } else{
@@ -92,7 +92,7 @@ function displayProducts() {
 
   products.forEach((product) => {
     const productCard = `
-            <div class="col-lg-4 col-md-6 col-sm-6 mb-4 product" id="computer">
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4 product">
                 <div class="card bg-dark text-white">
                     <img src="${product.image}" class="card-img-top" alt="product img" onclick="description('${product.intro}', '${product.image}', '${product.name}', '${product.price}')">
                     <div class="card-body ">
@@ -112,10 +112,10 @@ function description(intro, image, productName) {
   Swal.fire({
     title:`<h2> ${productName}</h2>`,
     html: `
-        <div style="display: flex; align-items: center;">
-                <img src="${image}" style="width: 100%; height: 100%; object">
-        </div>
-            `,
+          <div style="display: flex; align-items: center;">
+            <img src="${image}" style="width: 100%; height: 100%; object">
+          </div>
+          `,
     backdrop:'#f333333',
     showConfirmButton: false,
     background: "#fffff4",
@@ -124,7 +124,7 @@ function description(intro, image, productName) {
 
 function confirmAddToCart(productName, price, intro, image) {
   Swal.fire({
-    title: "Add to Cart",
+    title: "7ot fil panier",
     html: `
             <div style="display: flex; align-items: center;">
                 <div style="padding-right: 20px;">
@@ -164,9 +164,9 @@ function addToCart(productName, price, quantity) {
 }
 
 function openCart() {
-  let cartContent = "<h6>Shopped Items</h6>";
+  let cartContent = "<h6>Added Items</h6>";
   if (shoppingCart.length === 0) {
-    cartContent += "<p>Your cart is empty.</p>";
+    cartContent += "<p>Mazidt chy lil panier mte3ik</p>";
     // Change the cart button icon back to the regular icon
     cartButton.classList.remove("fa-bell");
     cartButton.classList.add("fa-cart-plus");
@@ -191,7 +191,7 @@ function openCart() {
   Swal.fire({
     title: "Your shopping cart",
     html: cartContent,
-    confirmButtonText: "Continue Shopping",
+    confirmButtonText: "irja3 bech t7ot 7weyij fil panier",
     confirmButtonColor: "#fc5d",
   });
 }
@@ -223,10 +223,11 @@ function promptUserData(callback) {
   Swal.fire({
     title: "Enter Your Details",
     html:
-      '<input id="swal-input1" class="swal2-input" placeholder="Full Name">' +
-      '<input id="swal-input2" class="swal2-input" placeholder="Phone Number">' +
+      '<input id="swal-input1" class="swal2-input" placeholder=ismik kemil">' +
+      '<input id="swal-input2" class="swal2-input" placeholder="noumro telifounik">' +
+      '<input id="swal-input2" type="email" required class="swal2-input" placeholder="email">' +
       '<select id="swal-input3" class="swal2-input">' +
-        '<option value="" disabled selected>Select Your City</option>' +
+        '<option value="" disabled selected>7ot inti mnin</option>' +
         '<option value="Tunis">Tunis</option>' +
         '<option value="Sfax">Sfax</option>' +
         '<option value="Sousse">Sousse</option>' +
@@ -428,7 +429,7 @@ function checkout() {
     Swal.fire({
       title: "Confirm Purchase",
       html: `
-        <p>Total Price: ${totalPrice} دت<br>Are you sure you want to proceed with the purchase?</p>
+        <p>Total Price: ${totalPrice} دت<br>heka totale kamil lili baa3do</p>
       `,
       icon: "info",
       showCancelButton: true,
@@ -462,7 +463,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
   Swal.fire({
     title: "Sending...",
     titleColor: "#fc1111",
-    text: "Please wait while your purchase is being processed.",
+    text: "9e3din n3adiwlik fil command mte3ik",
     icon: "info",
     allowOutsideClick: false,
     showConfirmButton: false,
@@ -492,14 +493,14 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
       // Show success message
       Swal.fire({
         title: "Demand Reached",
-        text: "Your purchase was successful. We'll contact you soon.",
+        text: "wsol ! taw nkalmouk 3la 9rib nchallah.",
         imageUrl: "/img/sc.png",
         imageAlt: "Custom Success Icon",
         showConfirmButton: false,
         timer: 2000,
         icon: null,
         background: "black",
-        color: "white",
+        color: "gold",
       });
     } else {
       console.error("Error sending product:", productName);

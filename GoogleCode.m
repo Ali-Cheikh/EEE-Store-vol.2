@@ -14,6 +14,9 @@ function doPost(e) {
     // Add the phone number from the request parameters
     rowData.push(e.parameter.phone);
 
+    // Add the Email from the request parameters
+    rowData.push(e.parameter.email);
+
     // Add the product name from the request parameters
     rowData.push(e.parameter.productName);
 
