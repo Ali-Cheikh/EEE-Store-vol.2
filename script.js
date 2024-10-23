@@ -82,8 +82,6 @@ function SearchFunction() {
   }
 }
 
-
-
 displayProducts();
 
 function displayProducts() {
@@ -151,8 +149,8 @@ function addToCart(productName, price, quantity) {
   console.log("Shopping Cart:", shoppingCart);
 
   // Change the cart button icon
-  cartButton.classList.remove("fa-cart-plus");
-  cartButton.classList.add("fa-bell");
+  cartButton.classList.remove("fa-cart-shopping");
+  cartButton.classList.add("fa-cart-plus");
 
   Swal.fire({
     icon: "success",
@@ -168,8 +166,8 @@ function openCart() {
   if (shoppingCart.length === 0) {
     cartContent += "<p>Mazidt chy lil panier mte3ik</p>";
     // Change the cart button icon back to the regular icon
-    cartButton.classList.remove("fa-bell");
-    cartButton.classList.add("fa-cart-plus");
+    cartButton.classList.remove("fa-cart-plus");
+    cartButton.classList.add("fa-cart-shopping");
   } else {
     shoppingCart.forEach((item) => {
       cartContent += `
@@ -206,8 +204,8 @@ function removeFromCart(productName) {
   }
   // Check if cart is empty to change the icon back
   if (shoppingCart.length === 0) {
-    cartButton.classList.remove("fa-bell");
-    cartButton.classList.add("fa-cart-plus");
+    cartButton.classList.remove("fa-cart-plus");
+    cartButton.classList.add("fa-cart-shopping");
   }
 }
 
@@ -219,6 +217,7 @@ function updateCount(productName, newCount) {
     shoppingCart[index].count = parseInt(newCount);
   }
 }
+
 function promptUserData(callback) {
   Swal.fire({
     title: "Enter Your Details",
@@ -472,7 +471,7 @@ function sendProductToGoogleSheets(productName, price, count, userData) {
     },
   });
 
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyo1HjEa0OKfMyTNVIZoguYTF5KmPjeX5YbqG6TyA2IaLqETGHdoi8eEKWV0M5m7vAM/exec";
+  const scriptUrl = " ";
 
   const formData = new FormData();
   formData.append("productName", productName);
