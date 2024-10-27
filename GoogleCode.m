@@ -6,7 +6,7 @@ function doPost(e) {
     var rowData = [];
 
     // Add an empty row
-    rowData.push(""); 
+    rowData.push("");
 
     // Add the name from the request parameters
     rowData.push(e.parameter.name);
